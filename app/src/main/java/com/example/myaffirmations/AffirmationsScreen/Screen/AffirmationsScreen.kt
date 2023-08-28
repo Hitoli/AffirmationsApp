@@ -26,9 +26,8 @@ fun AffirmationsScreen (viewmodel:AffimationsViewModel= hiltViewModel(),context:
 
     Column {
         Text(text = c)
-        Button(onClick = { viewmodel.buildingNotification(context)}) {
-        Text(text = "ShowNotification")
-        }
+
+
     }
 
 

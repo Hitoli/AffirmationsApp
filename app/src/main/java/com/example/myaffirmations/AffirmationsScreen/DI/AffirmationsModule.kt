@@ -1,13 +1,23 @@
 package com.example.myaffirmations.AffirmationsScreen.DI
 
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.myaffirmations.AffirmationsScreen.Repository.AffirmationsRepository
+import com.example.myaffirmations.AffirmationsScreen.Repository.IGetAllAffirmationsResponseRepo
 import com.example.myaffirmations.AffirmationsScreen.Services.IGetRetrofitCalls
-import com.example.myaffirmations.R
-import dagger.Component
+import com.example.myaffirmations.AffirmationsScreen.UseCase.AffirmationsUsecase
+import com.example.myaffirmations.AffirmationsScreen.UseCase.IGetAllAffirmationsUsecase
+import com.example.myaffirmations.AffirmationsScreen.ViewModel.AffimationsViewModel
+import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmReceiver
+import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmSchedule
+import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmScheduler
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,6 +57,21 @@ class AffirmationsModule {
         notificaitonManager.createNotificationChannel(channel)
         return notificaitonManager
     }
+@Module
+@InstallIn(SingletonComponent::class)
+interface AppModuleBinds{
+    @Binds
+    @Singleton
+    fun provideAlarmSchedular(alarmSchedule: AlarmSchedule): AlarmScheduler
+    @Binds
+    @Singleton
+    fun provideRepositoryQuotes(repo: AffirmationsRepository): IGetAllAffirmationsResponseRepo
+    @Binds
+    @Singleton
+    fun provideUsecaeQuotes( usecase: AffirmationsUsecase): IGetAllAffirmationsUsecase
+}
+
+
 
 
 }
