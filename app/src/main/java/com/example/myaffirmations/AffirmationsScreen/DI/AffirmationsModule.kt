@@ -11,20 +11,24 @@ import androidx.core.app.NotificationManagerCompat
 import com.example.myaffirmations.AffirmationsScreen.Repository.AffirmationsRepository
 import com.example.myaffirmations.AffirmationsScreen.Repository.IGetAllAffirmationsResponseRepo
 import com.example.myaffirmations.AffirmationsScreen.Services.IGetRetrofitCalls
+import com.example.myaffirmations.AffirmationsScreen.Services.IGetUnplashRetrofitCalls
 import com.example.myaffirmations.AffirmationsScreen.UseCase.AffirmationsUsecase
 import com.example.myaffirmations.AffirmationsScreen.UseCase.IGetAllAffirmationsUsecase
 import com.example.myaffirmations.AffirmationsScreen.ViewModel.AffimationsViewModel
 import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmReceiver
 import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmSchedule
 import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmScheduler
+import com.google.gson.Gson
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -32,14 +36,28 @@ import javax.inject.Singleton
 class AffirmationsModule {
     @Provides
     @Singleton
+    @QuotesRetrofit
     fun provideAffirmatiosNetworkCall(): Retrofit {
         return Retrofit.Builder().baseUrl(" https://api.themotivate365.com/").addConverterFactory(GsonConverterFactory.create()).build()
     }
     @Provides
     @Singleton
-    fun getAffirmationsResponse(retrofit: Retrofit):IGetRetrofitCalls{
+    fun getAffirmationsResponse(@QuotesRetrofit retrofit: Retrofit):IGetRetrofitCalls{
         return retrofit.create(IGetRetrofitCalls::class.java)
     }
+    @Provides
+    @Singleton
+    @UnsplashRetrofit
+    fun provideUnsplashNetworkCall():Retrofit{
+        return Retrofit.Builder().baseUrl("https://api.unsplash.com/").addConverterFactory(GsonConverterFactory.create()).build()
+    }
+
+    @Provides
+    @Singleton
+    fun getUnsplashResponse(@UnsplashRetrofit retrofit: Retrofit):IGetUnplashRetrofitCalls{
+        return retrofit.create(IGetUnplashRetrofitCalls::class.java)
+    }
+
     @Provides
     @Singleton
     fun notificationCall(@ApplicationContext context: Context):NotificationCompat.Builder{
@@ -70,8 +88,12 @@ interface AppModuleBinds{
     @Singleton
     fun provideUsecaeQuotes( usecase: AffirmationsUsecase): IGetAllAffirmationsUsecase
 }
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class QuotesRetrofit
 
-
-
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class UnsplashRetrofit
 
 }
