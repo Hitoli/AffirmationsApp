@@ -6,8 +6,12 @@ import com.example.myaffirmations.JournalScreen.DB.NoteDAO
 import com.example.myaffirmations.JournalScreen.DB.NoteDatabase
 import com.example.myaffirmations.JournalScreen.Repository.IGetNoteRepository
 import com.example.myaffirmations.JournalScreen.Repository.noteRepository
+import com.example.myaffirmations.JournalScreen.Usecase.IAddNotesUsecase
 import com.example.myaffirmations.JournalScreen.Usecase.IDeleteNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.IGetNotebyIdUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.IGetNotesByIDUsecase
 import com.example.myaffirmations.JournalScreen.Usecase.IGetNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.addNotesUsecase
 import com.example.myaffirmations.JournalScreen.Usecase.deleteNotesUsecase
 import com.example.myaffirmations.JournalScreen.Usecase.getNotesUsecase
 import com.example.myaffirmations.JournalScreen.Usecase.noteUsecase
@@ -48,6 +52,14 @@ class NoteModule {
         @Binds
         @Singleton
         fun provideNoteGetUsecase(getnoteusecase:getNotesUsecase):IGetNotesUsecase
+
+        @Binds
+        @Singleton
+        fun provideNoteaddUsecase(addNotesUsecase: addNotesUsecase):IAddNotesUsecase
+
+        @Binds
+        @Singleton
+        fun provideNotebyIdUsecase(getNotesByIDUsecase: IGetNotesByIDUsecase):IGetNotebyIdUsecase
 
         @Binds
         @Singleton

@@ -39,12 +39,6 @@ fun AffirmationsScreen (viewmodel:AffimationsViewModel= hiltViewModel(),context:
             Text(text = "CALL")
         }
 
-        val painter = rememberAsyncImagePainter(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(d)
-                .build()
-        )
-        Image(painter = painter , contentDescription = null, modifier = Modifier.size(200.dp))
 
 
 
