@@ -1,4 +1,4 @@
-package com.example.myaffirmations.JournalScreen.Usecase
+package com.example.myaffirmations.JournalScreen.Usecase.GetNotesByID
 
 import com.example.myaffirmations.JournalScreen.DB.Note
 

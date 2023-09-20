@@ -56,7 +56,7 @@ fun NoteItem(
             Spacer(modifier = modifier.height(8.dp))
             Text(text = note.content, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface, maxLines = 10, overflow = TextOverflow.Ellipsis)
         }
-        IconButton(onClick = {onDeleteClick }, modifier = modifier.align(Alignment.BottomEnd)) {
+        IconButton(onClick = {onDeleteClick()}, modifier = modifier.align(Alignment.BottomEnd)) {
             Icon(imageVector = Icons.Default.Delete, contentDescription ="DELETE" )
         }
     }

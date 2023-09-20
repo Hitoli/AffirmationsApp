@@ -1,12 +1,11 @@
-package com.example.myaffirmations.JournalScreen.Usecase
+package com.example.myaffirmations.JournalScreen.Usecase.AddNotes
 
 import com.example.myaffirmations.JournalScreen.DB.Note
 import com.example.myaffirmations.JournalScreen.DB.invalidNotesException
 import com.example.myaffirmations.JournalScreen.Repository.noteRepository
-import com.example.myaffirmations.JournalScreen.Utils.notesEvent
 import javax.inject.Inject
 
-class addNotesUsecase @Inject constructor(val repo:noteRepository):IAddNotesUsecase {
+class addNotesUsecase @Inject constructor(val repo:noteRepository): IAddNotesUsecase {
     override suspend fun invoke(notes: Note) {
         @Throws(invalidNotesException::class)
         if(notes.title.isBlank()){

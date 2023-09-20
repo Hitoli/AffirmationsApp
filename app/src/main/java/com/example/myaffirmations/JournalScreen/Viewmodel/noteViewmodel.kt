@@ -4,12 +4,10 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myaffirmations.JournalScreen.DB.Note
-import com.example.myaffirmations.JournalScreen.Usecase.IAddNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.IDeleteNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.IGetNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.noteUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.AddNotes.IAddNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.DeleteNotes.IDeleteNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.GetNotes.IGetNotesUsecase
 import com.example.myaffirmations.JournalScreen.Utils.noteOrder
 import com.example.myaffirmations.JournalScreen.Utils.noteOrderType
 import com.example.myaffirmations.JournalScreen.Utils.noteStates
@@ -21,7 +19,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 @HiltViewModel
-class noteViewmodel @Inject constructor( val getusecase:IGetNotesUsecase, val deleteusecase:IDeleteNotesUsecase, val addnotesusecase:IAddNotesUsecase):ViewModel() {
+class noteViewmodel @Inject constructor(val getusecase: IGetNotesUsecase, val deleteusecase: IDeleteNotesUsecase, val addnotesusecase: IAddNotesUsecase):ViewModel() {
 
     private val _states = mutableStateOf(noteStates())
     val state: State<noteStates> = _states
@@ -49,8 +47,8 @@ class noteViewmodel @Inject constructor( val getusecase:IGetNotesUsecase, val de
             }
             is notesEvent.notesDelete->{
                 viewModelScope.launch {
-                    deleteusecase.invoke(events.notes)
-                    notesRececnt = events.notes
+                    deleteusecase.invoke(events.note)
+                    notesRececnt = events.note
                 }
             }
             is notesEvent.RestoreNote->{
@@ -64,6 +62,8 @@ class noteViewmodel @Inject constructor( val getusecase:IGetNotesUsecase, val de
                     isOrderSectionVisible = !state.value.isOrderSectionVisible
                 )
             }
+
+            else -> {}
         }
     }
 
@@ -71,7 +71,7 @@ class noteViewmodel @Inject constructor( val getusecase:IGetNotesUsecase, val de
 
         notesjob?.cancel()
         notesjob = getusecase.invoke(notesorder).onEach {
-            notes -> _states.value = state.value.copy(notes= notes, noteOrders = notesorder)
+            note -> _states.value = state.value.copy(notes= note, noteOrders = notesorder)
         }.launchIn(viewModelScope)
 
     }

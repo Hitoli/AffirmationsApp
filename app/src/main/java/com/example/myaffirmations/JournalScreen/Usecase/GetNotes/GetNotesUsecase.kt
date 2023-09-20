@@ -1,4 +1,4 @@
-package com.example.myaffirmations.JournalScreen.Usecase
+package com.example.myaffirmations.JournalScreen.Usecase.GetNotes
 
 import com.example.myaffirmations.JournalScreen.DB.Note
 import com.example.myaffirmations.JournalScreen.Repository.IGetNoteRepository
@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class getNotesUsecase @Inject constructor(val noteRepo:IGetNoteRepository):IGetNotesUsecase {
+class getNotesUsecase @Inject constructor(val noteRepo:IGetNoteRepository): IGetNotesUsecase {
     override suspend fun invoke(noteorder: noteOrder): Flow<List<Note>> {
         return noteRepo.getNotes().map { Notes->
             when(noteorder.ordertype){

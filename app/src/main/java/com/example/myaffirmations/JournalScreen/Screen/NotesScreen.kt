@@ -51,7 +51,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun NotesScreen(viewmodel: noteViewmodel= hiltViewModel(),navController:NavController, onClick:()->Unit) {
+fun NotesScreen(viewmodel: noteViewmodel= hiltViewModel(),navController:NavController) {
 
     val state = viewmodel.state.value
     val snackbarhoststate = remember{SnackbarHostState()}
@@ -60,7 +60,7 @@ fun NotesScreen(viewmodel: noteViewmodel= hiltViewModel(),navController:NavContr
 
     Scaffold( modifier = Modifier, snackbarHost = {SnackbarHost(snackbarhoststate)},
         floatingActionButton = {
-            FloatingActionButton(onClick = { navController.navigate(Screens.AddEditNoteScreen.route) },Modifier.background(MaterialTheme.colorScheme.primary)) {
+            FloatingActionButton(onClick = { navController.navigate(Screens.addEditNoteScreen.route) },Modifier.background(MaterialTheme.colorScheme.primary).padding(bottom = 65.dp)) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "ADD FLOATING BUTTON")
             }
         }
@@ -68,7 +68,7 @@ fun NotesScreen(viewmodel: noteViewmodel= hiltViewModel(),navController:NavContr
     ) {
         val pad = it
         Column(modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(16.dp)) {
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
                 Text(text = "Your Note", style = MaterialTheme.typography.headlineLarge)
@@ -79,19 +79,22 @@ fun NotesScreen(viewmodel: noteViewmodel= hiltViewModel(),navController:NavContr
             }
             AnimatedVisibility(visible = state.isOrderSectionVisible, enter = fadeIn()+ slideInVertically(), exit = fadeOut()+ slideOutVertically()) {
                 OrderSection(modifier = Modifier
-                    .fillMaxSize()
-                    .padding(vertical = 16.dp), onOrderChange ={
-                    viewmodel.onEvent(notesEvent.Order(it))
+                    .padding(vertical = 16.dp), NoteOrder = state.noteOrders, onOrderChange ={Orders->
+                    viewmodel.onEvent(notesEvent.Order(Orders))
                 } )
             }
             Spacer(modifier = Modifier.height(16.dp))
             LazyColumn(modifier = Modifier.fillMaxSize()){
                 items(state.notes){
-                    notes-> NoteItem(note = notes, modifier = Modifier
+                    note-> NoteItem(note = note, modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
-                               Screens.AddEditNoteScreen.route + "?noteId=${notes.id}&noteColor=${notes.color}"
-                    }, onDeleteClick = {viewmodel.onEvent(notesEvent.notesDelete(notes))
+                        navController.navigate(
+                            Screens.addEditNoteScreen.route+
+                                    "?noteId=${note.id}&noteColor=${note.color}"
+                        )}, onDeleteClick = {
+                    viewmodel.onEvent(notesEvent.notesDelete(note))
+
                     scope.launch {
                         val result = snackbarhoststate.showSnackbar(message = "Notes Deleted", actionLabel = "Undo")
                         if(result == SnackbarResult.ActionPerformed){

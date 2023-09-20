@@ -6,15 +6,14 @@ import com.example.myaffirmations.JournalScreen.DB.NoteDAO
 import com.example.myaffirmations.JournalScreen.DB.NoteDatabase
 import com.example.myaffirmations.JournalScreen.Repository.IGetNoteRepository
 import com.example.myaffirmations.JournalScreen.Repository.noteRepository
-import com.example.myaffirmations.JournalScreen.Usecase.IAddNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.IDeleteNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.IGetNotebyIdUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.IGetNotesByIDUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.IGetNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.addNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.deleteNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.getNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.noteUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.AddNotes.IAddNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.DeleteNotes.IDeleteNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.GetNotesByID.IGetNotebyIdUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.GetNotesByID.IGetNotesByIDUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.GetNotes.IGetNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.AddNotes.addNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.DeleteNotes.deleteNotesUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.GetNotes.getNotesUsecase
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -51,18 +50,18 @@ class NoteModule {
 
         @Binds
         @Singleton
-        fun provideNoteGetUsecase(getnoteusecase:getNotesUsecase):IGetNotesUsecase
+        fun provideNoteGetUsecase(getnoteusecase: getNotesUsecase): IGetNotesUsecase
 
         @Binds
         @Singleton
-        fun provideNoteaddUsecase(addNotesUsecase: addNotesUsecase):IAddNotesUsecase
+        fun provideNoteaddUsecase(addNotesUsecase: addNotesUsecase): IAddNotesUsecase
 
         @Binds
         @Singleton
-        fun provideNotebyIdUsecase(getNotesByIDUsecase: IGetNotesByIDUsecase):IGetNotebyIdUsecase
+        fun provideNotebyIdUsecase(getNotesByIDUsecase: IGetNotesByIDUsecase): IGetNotebyIdUsecase
 
         @Binds
         @Singleton
-        fun provideNotedeleteUsecase(deletenotesusecase: deleteNotesUsecase):IDeleteNotesUsecase
+        fun provideNotedeleteUsecase(deletenotesusecase: deleteNotesUsecase): IDeleteNotesUsecase
     }
 }

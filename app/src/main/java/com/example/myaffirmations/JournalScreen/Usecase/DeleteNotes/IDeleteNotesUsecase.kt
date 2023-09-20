@@ -1,4 +1,4 @@
-package com.example.myaffirmations.JournalScreen.Usecase
+package com.example.myaffirmations.JournalScreen.Usecase.DeleteNotes
 
 import com.example.myaffirmations.JournalScreen.DB.Note
 import kotlinx.coroutines.flow.Flow

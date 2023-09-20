@@ -8,9 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myaffirmations.JournalScreen.DB.Note
 import com.example.myaffirmations.JournalScreen.DB.invalidNotesException
-import com.example.myaffirmations.JournalScreen.Usecase.IGetNotebyIdUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.addNotesUsecase
-import com.example.myaffirmations.JournalScreen.Usecase.noteUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.GetNotesByID.IGetNotebyIdUsecase
+import com.example.myaffirmations.JournalScreen.Usecase.AddNotes.addNotesUsecase
 import com.example.myaffirmations.JournalScreen.Utils.AddEditNoteEvent
 import com.example.myaffirmations.JournalScreen.Utils.NoteTextFieldState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +19,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class addEditNoteViewModel @Inject constructor(val Igetnotebyid:IGetNotebyIdUsecase, val addnotes:addNotesUsecase, savedStateHandle: SavedStateHandle):ViewModel() {
+class addEditNoteViewModel @Inject constructor(val Igetnotebyid: IGetNotebyIdUsecase, val addnotes: addNotesUsecase, savedStateHandle: SavedStateHandle):ViewModel() {
 
     private val _noteTitle = mutableStateOf(NoteTextFieldState(
         hint = "Enter Title..."
@@ -77,6 +76,11 @@ class addEditNoteViewModel @Inject constructor(val Igetnotebyid:IGetNotebyIdUsec
             is AddEditNoteEvent.EnteredContent->{
                 _noteContent.value = noteContent.value.copy(
                     text = event.value
+                )
+            }
+            is AddEditNoteEvent.ChangeContentFocus->{
+                _noteContent.value = noteContent.value.copy(
+                    isHintVisible = !event.focusState.isFocused && noteContent.value.text.isBlank()
                 )
             }
             is AddEditNoteEvent.ChangeColor->{

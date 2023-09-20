@@ -15,16 +15,16 @@ import com.example.myaffirmations.JournalScreen.Utils.noteOrderType
 @Composable
 fun OrderSection(
     modifier: Modifier,
-    NoteOrder:noteOrder = (noteOrder.Date(ordertype = noteOrderType.Descending)),
+    NoteOrder:noteOrder = (noteOrder.Title(ordertype = noteOrderType.Descending)),
     onOrderChange:(noteOrder)->Unit
 ) {
     Column(modifier = modifier) {
-        Row(modifier = modifier.fillMaxSize()) {
+        Row(modifier = modifier) {
             DefaultRadioButton(text = "Title", checked =NoteOrder is noteOrder.Title , onCheck = { onOrderChange(noteOrder.Title(NoteOrder.ordertype)) })
             Spacer(modifier = modifier.width(8.dp))
-            DefaultRadioButton(text = "Date", checked =NoteOrder is noteOrder.Date , onCheck = { onOrderChange(noteOrder.Title(NoteOrder.ordertype)) })
+            DefaultRadioButton(text = "Date", checked =NoteOrder is noteOrder.Date , onCheck = { onOrderChange(noteOrder.Date(NoteOrder.ordertype)) })
             Spacer(modifier = modifier.width(8.dp))
-            DefaultRadioButton(text = "Color", checked =NoteOrder is noteOrder.Color , onCheck = { onOrderChange(noteOrder.Title(NoteOrder.ordertype)) })
+            DefaultRadioButton(text = "Color", checked =NoteOrder is noteOrder.Color , onCheck = { onOrderChange(noteOrder.Color(NoteOrder.ordertype)) })
             Spacer(modifier = modifier.width(8.dp))
         }
         Spacer(modifier = modifier.width(16.dp))

@@ -1,4 +1,4 @@
-package com.example.myaffirmations.JournalScreen.Usecase
+package com.example.myaffirmations.JournalScreen.Usecase.GetNotes
 
 import com.example.myaffirmations.JournalScreen.DB.Note
 import com.example.myaffirmations.JournalScreen.Utils.noteOrder
