@@ -10,10 +10,14 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.myaffirmations.AffirmationsScreen.Repository.AffirmationsRepository
 import com.example.myaffirmations.AffirmationsScreen.Repository.IGetAllAffirmationsResponseRepo
+import com.example.myaffirmations.AffirmationsScreen.Repository.IgetUnsplashRepository
+import com.example.myaffirmations.AffirmationsScreen.Repository.UnsplashRespository
 import com.example.myaffirmations.AffirmationsScreen.Services.IGetRetrofitCalls
 import com.example.myaffirmations.AffirmationsScreen.Services.IGetUnplashRetrofitCalls
 import com.example.myaffirmations.AffirmationsScreen.UseCase.AffirmationsUsecase
 import com.example.myaffirmations.AffirmationsScreen.UseCase.IGetAllAffirmationsUsecase
+import com.example.myaffirmations.AffirmationsScreen.UseCase.IgetImagefromUnsplash
+import com.example.myaffirmations.AffirmationsScreen.UseCase.UnsplashImageUsecase
 import com.example.myaffirmations.AffirmationsScreen.ViewModel.AffimationsViewModel
 import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmReceiver
 import com.example.myaffirmations.AffirmationsScreen.Utils.AlarmSchedule
@@ -38,7 +42,7 @@ class AffirmationsModule {
     @Singleton
     @QuotesRetrofit
     fun provideAffirmatiosNetworkCall(): Retrofit {
-        return Retrofit.Builder().baseUrl(" https://api.themotivate365.com/").addConverterFactory(GsonConverterFactory.create()).build()
+        return Retrofit.Builder().baseUrl("https://zenquotes.io/api/").addConverterFactory(GsonConverterFactory.create()).build()
     }
     @Provides
     @Singleton
@@ -84,9 +88,17 @@ interface AppModuleBinds{
     @Binds
     @Singleton
     fun provideRepositoryQuotes(repo: AffirmationsRepository): IGetAllAffirmationsResponseRepo
+
+    @Binds
+    @Singleton
+    fun provideRepositoryImages(repo: UnsplashRespository): IgetUnsplashRepository
     @Binds
     @Singleton
     fun provideUsecaeQuotes( usecase: AffirmationsUsecase): IGetAllAffirmationsUsecase
+
+    @Binds
+    @Singleton
+    fun provideUsecaeImages( usecase: UnsplashImageUsecase): IgetImagefromUnsplash
 }
     @Qualifier
     @Retention(AnnotationRetention.BINARY)

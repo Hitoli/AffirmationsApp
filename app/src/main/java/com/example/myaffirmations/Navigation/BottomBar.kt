@@ -25,6 +25,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.myaffirmations.JournalScreen.Utils.Screens
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottombarNavigation(navController: NavHostController,context: Context) {
 

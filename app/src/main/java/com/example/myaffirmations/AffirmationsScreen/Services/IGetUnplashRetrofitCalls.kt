@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface IGetUnplashRetrofitCalls {
     @Headers("Authorization: Client-ID IGd8zMa606y3CftqdkQLo4PC7_qPyrV18tK_a8Rva9Q")
     @GET("search/photos")
-    suspend fun getAllPhotos(@Query("query")query: String):UnsplashResponse
+    suspend fun getAllPhotos(@Query("per_page")per_page: String,@Query("query")query: String="Rome + Stoicism"):UnsplashResponse
 }

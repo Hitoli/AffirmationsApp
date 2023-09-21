@@ -1,13 +1,12 @@
 package com.example.myaffirmations.AffirmationsScreen.UseCase
 
 import com.example.myaffirmations.AffirmationsScreen.Repository.AffirmationsRepository
-import com.example.myaffirmations.AffirmationsScreen.Response.AffirmationsResponse
-import com.example.myaffirmations.AffirmationsScreen.Response.UnsplashResponse
 import javax.inject.Inject
+import com.example.myaffirmations.AffirmationsScreen.Response.AffirmationsResponse
+
 
 interface IGetAllAffirmationsUsecase{
     suspend fun invoke():AffirmationsResponse
-    suspend fun invokeimg():UnsplashResponse
 }
 
 class AffirmationsUsecase @Inject constructor(val repo:AffirmationsRepository):IGetAllAffirmationsUsecase {
@@ -16,8 +15,5 @@ class AffirmationsUsecase @Inject constructor(val repo:AffirmationsRepository):I
         return response
     }
 
-    override suspend fun invokeimg(): UnsplashResponse {
-        val responseIMG = repo.getAllUnsplashImages()
-        return responseIMG
-    }
+
 }
