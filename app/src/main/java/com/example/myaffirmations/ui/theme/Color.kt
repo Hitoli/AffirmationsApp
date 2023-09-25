@@ -15,3 +15,5 @@ val Emerald = Color(0xFF16DB93)
 val Fandango = Color(0xFFA4036F)
 val Maize = Color(0xFFEFEA5A)
 val Sandybrown = Color(0xFFF29E4C)
+
+val backgroundCharcoal = Color(0xFF36454F)

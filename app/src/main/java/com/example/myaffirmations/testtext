@@ -1,0 +1,294 @@
+package com.example.myaffirmations
+
+import androidx.compose.runtime.Composable
+
+@Composable
+fun test() {
+
+}
+
+@Composable
+fun IPhone141(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .requiredWidth(width = 390.dp)
+            .requiredHeight(height = 844.dp)
+            .clip(shape = RoundedCornerShape(30.dp))
+            .background(brush = Brush.linearGradient(
+                0f to Color(0xffaed2ff).copy(alpha = 0.93f),
+                1f to Color(0xff27005d),
+                start = Offset(11f, 15.5f),
+                end = Offset(377.5f, 844f)))
+    ) {
+        Box(
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = (-1).dp,
+                    y = 750.dp)
+                .requiredWidth(width = 390.dp)
+                .requiredHeight(height = 94.dp)
+                .clip(shape = RoundedCornerShape(topStart = 25.dp, topEnd = 25.dp))
+                .background(color = Color(0xffd3d3d2))
+                .border(border = BorderStroke(1.dp, Color.Black),
+                    shape = RoundedCornerShape(topStart = 25.dp, topEnd = 25.dp)))
+        Image(
+            painter = painterResource(id = R.drawable.milkyway11),
+            contentDescription = "milky-way (1) 1",
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 83.dp,
+                    y = 770.dp)
+                .requiredSize(size = 30.dp))
+        Text(
+            text = "Home",
+            color = Color.Black,
+            style = TextStyle(
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold),
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 81.dp,
+                    y = 808.dp))
+        Text(
+            text = "Journal",
+            color = Color.Black,
+            style = TextStyle(
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold),
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 267.dp,
+                    y = 808.dp))
+        Text(
+            text = "Soul Up",
+            color = Color.Black,
+            textAlign = TextAlign.Center,
+            style = TextStyle(
+                fontSize = 33.sp),
+            modifier = Modifier
+                .align(alignment = Alignment.TopCenter)
+                .offset(x = (-141.5).dp,
+                    y = 33.dp))
+        Image(
+            painter = painterResource(id = R.drawable.img_54094901),
+            contentDescription = "5409490 1",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 317.dp,
+                    y = 28.dp)
+                .requiredSize(size = 35.dp)
+                .clip(shape = RoundedCornerShape(50.dp))
+                .border(border = BorderStroke(2.dp, Color.White),
+                    shape = RoundedCornerShape(50.dp)))
+        Image(
+            painter = painterResource(id = R.drawable.news1),
+            contentDescription = "news 1",
+            modifier = Modifier
+                .align(alignment = Alignment.TopCenter)
+                .offset(x = 95.dp,
+                    y = 770.dp)
+                .requiredSize(size = 30.dp))
+        Image(
+            painter = painterResource(id = R.drawable.rectangle4),
+            contentDescription = "Rectangle 4",
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 23.dp,
+                    y = 90.dp)
+                .requiredWidth(width = 344.dp)
+                .requiredHeight(height = 632.dp)
+                .clip(shape = RoundedCornerShape(32.dp)))
+        Text(
+            text = "Two roads diverged in a wood and I - I took the one less traveled by, and that has made all the difference.",
+            color = Color.White,
+            style = TextStyle(
+                fontSize = 25.sp),
+            modifier = Modifier
+                .align(alignment = Alignment.TopCenter)
+                .offset(x = 3.5.dp,
+                    y = 329.dp)
+                .requiredWidth(width = 301.dp)
+                .requiredHeight(height = 63.dp))
+        Box(
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 225.dp,
+                    y = 648.dp)
+                .requiredSize(size = 50.dp)
+                .clip(shape = CircleShape)
+                .background(color = Color(0xff9400ff)))
+        Box(
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 113.dp,
+                    y = 649.dp)
+                .requiredSize(size = 50.dp)
+                .clip(shape = CircleShape)
+                .background(color = Color(0xff9400ff)))
+        Image(
+            painter = painterResource(id = R.drawable.arrow2),
+            contentDescription = "Arrow 2",
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 128.98532104492188.dp,
+                    y = 674.5.dp)
+                .requiredWidth(width = 17.dp)
+                .border(border = BorderStroke(2.dp, Color.White)))
+        Image(
+            painter = painterResource(id = R.drawable.favorite4641),
+            contentDescription = "favorite-4-64 1",
+            modifier = Modifier
+                .align(alignment = Alignment.TopStart)
+                .offset(x = 239.dp,
+                    y = 664.dp)
+                .requiredSize(size = 22.dp))
+    }
+}
+
+@Preview(widthDp = 390, heightDp = 844)
+@Composable
+private fun IPhone141Preview() {
+    IPhone141(Modifier)
+}
+
+Box(
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(
+x = (-1).dp,
+y = 750.dp
+)
+.requiredWidth(width = 390.dp)
+.requiredHeight(height = 94.dp)
+.clip(shape = RoundedCornerShape(topStart = 25.dp, topEnd = 25.dp))
+.background(color = Color(0xffd3d3d2))
+.border(
+border = BorderStroke(1.dp, Color.Black),
+shape = RoundedCornerShape(topStart = 25.dp, topEnd = 25.dp)
+))
+Image(
+painter = painterResource(id = R.drawable.home),
+contentDescription = "milky-way (1) 1",
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 83.dp,
+y = 770.dp)
+.requiredSize(size = 30.dp))
+
+Text(
+text = "Home",
+color = Color.Black,
+style = TextStyle(
+fontSize = 13.sp,
+fontWeight = FontWeight.Bold),
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 81.dp,
+y = 808.dp))
+
+Text(
+text = "Journal",
+color = Color.Black,
+style = TextStyle(
+fontSize = 13.sp,
+fontWeight = FontWeight.Bold),
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 267.dp,
+y = 808.dp))
+
+Text(
+text = "Soul Up",
+color = Color.Black,
+textAlign = TextAlign.Center,
+style = TextStyle(
+fontSize = 33.sp),
+modifier = Modifier
+.align(alignment = Alignment.TopCenter)
+.offset(x = (-141.5).dp,
+y = 33.dp))
+
+
+Image(
+painter = painterResource(id = R.drawable.home),
+contentDescription = "5409490 1",
+contentScale = ContentScale.Crop,
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 317.dp,
+y = 28.dp)
+.requiredSize(size = 35.dp)
+.clip(shape = RoundedCornerShape(50.dp))
+.border(border = BorderStroke(2.dp, Color.White),
+shape = RoundedCornerShape(50.dp)))
+Image(
+painter = painterResource(id = R.drawable.journal),
+contentDescription = "news 1",
+modifier = Modifier
+.align(alignment = Alignment.TopCenter)
+.offset(x = 95.dp,
+y = 770.dp)
+.requiredSize(size = 30.dp))
+
+Image(
+painter = painterResource(id = R.drawable.home),
+contentDescription = "Rectangle 4",
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 23.dp,
+y = 90.dp)
+.requiredWidth(width = 344.dp)
+.requiredHeight(height = 632.dp)
+.clip(shape = RoundedCornerShape(32.dp)))
+
+Text(
+text = "Two roads diverged in a wood and I - I took the one less traveled by, and that has made all the difference.",
+color = Color.White,
+style = TextStyle(
+fontSize = 25.sp),
+modifier = Modifier
+.align(alignment = Alignment.TopCenter)
+.offset(x = 3.5.dp,
+y = 329.dp)
+.requiredWidth(width = 301.dp)
+.requiredHeight(height = 63.dp))
+
+Box(
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 225.dp,
+y = 648.dp)
+.requiredSize(size = 50.dp)
+.clip(shape = CircleShape)
+.background(color = Color(0xff9400ff)))
+
+Box(
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 113.dp,
+y = 649.dp)
+.requiredSize(size = 50.dp)
+.clip(shape = CircleShape)
+.background(color = Color(0xff9400ff)))
+
+Image(
+painter = painterResource(id = R.drawable.loginimage),
+contentDescription = "Arrow 2",
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 128.98532104492188.dp,
+y = 674.5.dp)
+.requiredWidth(width = 17.dp)
+.border(border = BorderStroke(2.dp, Color.White)))
+Image(
+painter = painterResource(id = R.drawable.heart),
+contentDescription = "favorite-4-64 1",
+modifier = Modifier
+.align(alignment = Alignment.TopStart)
+.offset(x = 239.dp,
+y = 664.dp)
+.requiredSize(size = 22.dp))
+
+
+

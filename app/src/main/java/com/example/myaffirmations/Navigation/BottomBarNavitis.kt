@@ -17,7 +17,7 @@ import com.example.myaffirmations.JournalScreen.Utils.Screens
 @Composable
 fun BottoBarNavitis(navHostController: NavHostController,context: Context) {
 
-    NavHost(navHostController, startDestination = BottomBarNav.JournalScreen.route) {
+    NavHost(navHostController, startDestination = BottomBarNav.HomeScreen.route) {
         composable(route = BottomBarNav.JournalScreen.route) {
             NotesScreen(navController = navHostController)
         }
